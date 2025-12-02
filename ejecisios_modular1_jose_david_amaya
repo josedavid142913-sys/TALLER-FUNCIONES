@@ -1,0 +1,22 @@
+# Identificar si n numero es positivo, negativo o neutro
+
+def tomar_numero():
+    numero = int(input("Escriba el numero: "))
+    return numero
+
+def validar_numero(dato_numero):
+    if dato_numero > 0:
+        mensaje = "el numero es positivo"
+    elif dato_numero == 0:
+        mensaje = "el numero es neutro"
+    else:
+        mensaje = "el numero es negativo"
+    return mensaje
+
+def imprimir_dato(dato_mensaje):
+    print("El número es: " + dato_mensaje)
+
+# Programa principal
+num = tomar_numero()
+mensaje = validar_numero(num)
+imprimir_dato(mensaje)
