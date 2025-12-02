@@ -1,0 +1,30 @@
+# WILE 2
+def tomar_letra():
+    letra =str(input())
+    return letra
+def continuacion(letra):
+    if letra =='S' or letra == 's':
+        print("finalizo con exito. \n")
+        return False
+    else:
+        print("sigue dentro del proceso de DO WHILE \n")
+        return True
+    
+def imprimir_mensej_final():
+    print("el proceso DO WHILE  a finalizado. \n")
+
+# CODIGO PRINCIPAL
+
+while True:
+
+    print("digite la letra 'A' para Actualisar Sistema")
+    print("digite la letra 'E' para Eliminar Catalogo")
+    print("digite la letra 'C' para Crear Productos")
+    print("digite la letra 'S' para salir del programa")
+
+    letra = tomar_letra()
+    continua = continuacion(letra)
+
+    if not continua:
+        break
+imprimir_mensej_final()
