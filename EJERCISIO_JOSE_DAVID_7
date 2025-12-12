@@ -1,0 +1,18 @@
+# PROGRAMA PARA COMVERTIR DE CELCIUS A FARENHEIT
+
+def grados_celsius():
+    celsius = float(input("digite los grados centigrados "))
+    return celsius
+
+def hacer_calculo(celsius):
+    farenh = (celsius * (9/5)) + 32
+    return farenh
+
+def mostar_resultados(celsius , farenh):
+    print(str(celsius) +" los grados celsius pasan a farenheit de manera: "+ str(farenh))
+
+# Codigo
+
+celsius= grados_celsius()
+farenh= hacer_calculo(celsius)
+mostar_resultados(celsius,farenh)
