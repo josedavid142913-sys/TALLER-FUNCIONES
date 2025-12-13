@@ -1,0 +1,19 @@
+# PROGRAMA PARA IDENTIFICAR EL NUMERO MAYOR
+
+def recolecta_de_datos():
+    num_uno = float(input("Digite el primer número:"))
+    num_dos = float(input("Digite el segundo número:"))
+    return num_uno, num_dos
+
+def operacion(num_uno, num_dos):
+    numero_mayor = (num_uno + num_dos + abs(num_uno - num_dos)) / 2
+    return numero_mayor
+
+def mss(numero_mayor):
+    print("El numero numero mayor es:" + str(numero_mayor))
+
+# Codigo principal
+
+num_uno, num_dos = recolecta_de_datos()
+numero_mayor = operacion(num_uno, num_dos)
+mss(numero_mayor)
