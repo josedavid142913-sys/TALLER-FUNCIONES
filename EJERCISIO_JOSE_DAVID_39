@@ -1,0 +1,17 @@
+# PROGRAMA PARA HALLAR EL NUMERO PROMEDIO
+
+def encontrar_datos()
+    num_uno = float(input("Digite el primer numero:"))
+    num_dos = float(input("Digite el segundo numero"))
+    return num_uno, num_dos
+def calcular_total_de(num_uno, num_dos):
+    prom= num_uno + num_dos / 2
+    return prom
+def mensaje(prom):
+    print("El prom del numero es"+ str(prom))
+
+# Codigo
+
+num_uno, num_dos = encontrar_datos()
+prom = calcular_total_de(num_uno, num_dos)
+mensaje(prom)
