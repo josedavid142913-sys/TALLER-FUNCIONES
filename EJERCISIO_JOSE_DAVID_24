@@ -1,0 +1,18 @@
+# PROGRAMA PARA HALLAR EL AREA DE UN CUADRADO
+
+def tomar_datos():
+    numero=float(input("digite el numero"))
+    return numero
+
+def procesar(numero):
+    cuadrado=numero*numero
+    return cuadrado
+
+def mostrar(cuadrado):
+    print("el valor de cuadrado:",cuadrado)
+    
+# CODIGO
+
+numero= tomar_datos()
+cuadrado= procesar(numero)
+mostrar (cuadrado)
