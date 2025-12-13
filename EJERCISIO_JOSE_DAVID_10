@@ -1,0 +1,26 @@
+# PROGRAMA PARA HALLAR EL VOLUMEN DE UN PRISMA RECTANGULAR
+
+def tomar_datos():
+    print("Capturando datos...")
+    longitud = float(input("Ingrese la longitud: "))
+    print(f"Longitud recibida: {longitud}")
+    ancho = float(input("Ingrese el ancho: "))
+    print(f"Ancho recibido: {ancho}")
+    altura = float(input("Ingrese la altura: "))
+    print(f"Altura recibida: {altura}")
+    return longitud, ancho, altura
+
+def procesar(longitud, ancho, altura):
+    volumen = longitud * ancho * altura
+    return volumen
+
+def mostrar(volumen):
+    print("\n" + "-"*40)
+    print(f"El volumen del prisma rectangular es: {volumen}")
+    print("-"*40)
+
+# codigo 
+
+longitud, ancho, altura = tomar_datos()
+volumen = procesar(longitud, ancho, altura)
+mostrar(volumen)
