@@ -1,0 +1,20 @@
+# PROGRAMA PARA COMBERTIR DE LIBRAS A KILOGRAMOS
+
+def tomar_datos():
+    libras=float(input("ingrese libras"))
+    return libras
+
+def procesar(libras):
+    kilogramos=libras*0.45
+    return kilogramos
+
+def mostrar(kilogramos):
+    print("en kilogramos es:",kilogramos)
+
+
+ # CODIGO PRINCIPAL
+ 
+ 
+libras= tomar_datos()
+kilogramos=procesar(libras)
+mostrar(kilogramos)
