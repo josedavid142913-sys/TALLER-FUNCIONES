@@ -1,0 +1,17 @@
+# PROGRAMA PARA COMBERITR DE PULGADAS A CENTIMETROD
+
+def tomar_datos():
+    pulgadas=float(input("ingrese pulgadas"))
+    return pulgadas
+
+def procesar(pulgadas):
+    centimetros= pulgadas*2.54
+    return centimetros
+
+def mostrar(centimetros):
+    print("en centimetros es:",centimetros)
+    
+# CODIGO PRINCIPAL  
+pulgadas= tomar_datos()
+centimetros= procesar(pulgadas)
+mostrar(centimetros)
