@@ -1,0 +1,20 @@
+# PROGRAMA PARA HALLAR EL MULTIPLO DE UN NUMERO
+
+def toma_de_datos():
+    num_uno = int(input("escriba el primer numero que necesita:"))
+    num_dos = int(input("escriba el segundo numero que necesita"))
+    return num_uno, num_dos
+def ejecucion_operacion(num_uno, num_dos):
+    if num_uno % num_dos == 0:
+        mss = num_uno, "es multiplo de", num_dos
+    else:
+        mss = num_uno, " no es multiplo de", num_dos
+    return mss
+def mensaje(mss):
+    print("el multiplo es:" + str(mss))
+
+# Codigo
+
+num_uno , num_dos = toma_de_datos()
+mss = ejecucion_operacion(num_uno , num_dos)
+mensaje(mss)
