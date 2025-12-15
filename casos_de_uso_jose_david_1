@@ -1,0 +1,43 @@
+# TOMA DE DATOS
+
+def solicitar_calificacion():
+    while True:
+        try:
+            calificacion = int(input("Ingrese la calificación del pedido porfavor (de 1 a 5, o 0 para finalizar): "))
+            if calificacion == 0:
+                return 0
+            if 1 <= calificacion <= 5:
+                return calificacion
+            else:
+                print("Por favor, ingrese una calificación válida entre 1 y 5.")
+        except ValueError:
+            print("Entrada incorrecta. Ingrese un número entre 1 y 5 porfavor.")
+
+def procesar_pedidos():
+    total_pedidos = 0
+    puntuacion_total = 0
+    pedidos_excelentes = 0
+    
+    # BUCLE
+    
+    while True:
+        calificacion = solicitar_calificacion()
+        if calificacion == 0:
+            break
+        total_pedidos += 1
+        puntuacion_total += calificacion
+        
+        if calificacion == 5:
+            pedidos_excelentes += 1
+    
+    if total_pedidos > 0:
+        promedio_satisfaccion = puntuacion_total / total_pedidos
+        print(f"\nTotal de pedidos procesados: {total_pedidos}")
+        print(f"Promedio de satisfacción: {promedio_satisfaccion:.2f}")
+        print(f"Total de pedidos excelentes: {pedidos_excelentes}")
+    else:
+        print("No se procesaron pedidos.")
+
+#CODIGO
+
+procesar_pedidos()
