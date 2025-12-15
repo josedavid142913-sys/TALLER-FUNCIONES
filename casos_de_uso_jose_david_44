@@ -1,0 +1,113 @@
+# MÓDULO DE CONSTANTES
+OPCION_DEFECTUOSO = 'D'
+OPCION_OK = 'O'
+OPCION_SALIDA = 'STOP'
+
+# funciones
+def verificar_unidad(estado, unidad_numero):
+    
+    if estado == OPCION_DEFECTUOSO:
+        mensaje = f"Fallo en unidad #{unidad_numero}. (Defectuosa)"
+        return True, mensaje
+    elif estado == OPCION_OK:
+        mensaje = f"Unidad #{unidad_numero} pasó la prueba. (OK)"
+        return False, mensaje
+    else:
+        # Esto maneja entradas no válidas si no se controlan antes del llamado
+        mensaje = f"Estado desconocido '{estado}' para unidad #{unidad_numero}."
+        return False, mensaje
+
+
+def calcular_porcentaje(defectuosos, total):
+    if total == 0:
+        return 0.0
+    return (defectuosos / total) * 100
+ 
+def seguimiento_produccion():
+
+    total_unidades_procesadas = 0
+    total_unidades_defectuosas = 0
+    registro_de_fallos = []
+    registro_de_unidades_ok = []
+
+    print("---Seguimiento de Producción de Ensamblaje ---")
+    print("Opciones: 'D' Defectuosa, 'O' OK. Ingrese 'STOP' para finalizar.")
+
+    lote_numero = 0
+    
+    # bucles
+    
+    while True:
+        lote_numero += 1
+        print(f"\n--- Procesando Lote #{lote_numero} ---")
+        
+        try:
+            cantidad_lote = input("Ingrese la cantidad de unidades en el lote (o 'STOP'): ").strip().upper()
+            if cantidad_lote == OPCION_SALIDA:
+                break
+                
+            cantidad_lote = int(cantidad_lote)
+            if cantidad_lote <= 0:
+                print("La cantidad de unidades debe ser positiva.")
+                lote_numero -= 1
+                continue
+                
+        except ValueError:
+            print("Entrada inválida. Debe ser un número o 'STOP'.")
+            lote_numero -= 1
+            continue
+
+        unidades_en_lote = 0
+        while unidades_en_lote < cantidad_lote:
+            unidades_en_lote += 1
+            
+            estado_unidad = input(f"Unidad {unidades_en_lote}/{cantidad_lote} (D/O): ").strip().upper()
+
+            if estado_unidad not in [OPCION_DEFECTUOSO, OPCION_OK]:
+                print("Estado no válido. Ingrese 'D' o 'O'.")
+                unidades_en_lote -= 1 
+                continue
+
+
+            es_defectuosa, mensaje = verificar_unidad(estado_unidad, total_unidades_procesadas + 1)
+            total_unidades_procesadas += 1
+            
+            if es_defectuosa:
+                total_unidades_defectuosas += 1
+                registro_de_fallos.append(mensaje) 
+            else:
+                registro_de_unidades_ok.append(mensaje) 
+
+
+    mostrar_resultados_produccion(total_unidades_defectuosas, total_unidades_procesadas, registro_de_fallos, registro_de_unidades_ok)
+
+# Resultados
+def mostrar_resultados_produccion(defectuosos, total, fallos, ok):
+   
+    porcentaje = calcular_porcentaje(defectuosos, total) 
+
+    print("\n--- RESUMEN FINAL DE PRODUCCIÓN ---")
+    print(f"Total de Unidades Procesadas: {total}")
+    print(f"Contador de Defectuosos: {defectuosos}") 
+    print(f"Porcentaje de Unidades Defectuosas: {porcentaje:.2f}%")
+    print("------------------------------------")
+    
+    print("\n--- REGISTRO DE FALLOS DE CALIDAD ---")
+    if fallos:
+        for f in fallos:
+            print(f"- {f}")
+    else:
+        print("No se registraron unidades defectuosas.")
+
+    print("\n--- REGISTRO DE UNIDADES OK ---")
+    if ok:
+        for o in ok:
+            print(f"- {o}")
+    else:
+        print("No se registraron unidades OK.")
+    print("------------------------------------")
+
+
+# Codigo
+if __name__ == "__main__":
+    seguimiento_produccion()
