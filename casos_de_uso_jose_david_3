@@ -1,0 +1,76 @@
+# MÓDULO DE CONSTANTES
+SALDO_INICIAL_CUENTA = 1000.0
+
+# funciones
+def procesar_deposito(saldo_actual, monto):
+    if monto <= 0:
+        print("Error: El monto a depositar debe ser positivo.")
+        return saldo_actual, False
+        
+    saldo_actual += monto
+    print(f"Depósito de {monto:.2f} realizado.")
+    return saldo_actual, True
+
+def procesar_retiro(saldo_actual, monto):
+    if monto <= 0:
+        print("Error: El monto a retirar debe ser positivo.")
+        return saldo_actual, False
+        
+    
+    if saldo_actual - monto >= 0:
+        saldo_actual -= monto
+        print(f"Retiro de {monto:.2f} realizado.")
+        return saldo_actual, True
+    else:
+        print(f"Transacción inválida: Saldo insuficiente. Saldo actual: {saldo_actual:.2f}")
+        return saldo_actual, False
+
+# MÓDULO DE PROCESAMIENTO PRINCIPAL
+def procesamiento_transacciones():
+    
+    saldo_cuenta = SALDO_INICIAL_CUENTA
+    transacciones_validas = 0
+
+    print("---Procesamiento de Transacciones Bancarias Diarias ---")
+    print(f"Saldo Inicial: {saldo_cuenta:.2f}")
+
+    # Bucle
+    while True:
+        tipo = input("\nIngrese tipo ('D' Depósito, 'R' Retiro) o 'FIN' para terminar: ").strip().upper()
+
+        if tipo == "FIN":
+            break
+
+        if tipo not in ['D', 'R']:
+            print("Tipo de transacción no reconocido. Intente de nuevo.")
+            continue
+
+        try:
+            monto = float(input("Ingrese el monto de la transacción: "))
+        except ValueError:
+            print("Error: Monto inválido. Debe ser un número.")
+            continue
+        
+        exito = False
+        
+        if tipo == 'D':
+            saldo_cuenta, exito = procesar_deposito(saldo_cuenta, monto)
+        elif tipo == 'R':
+            saldo_cuenta, exito = procesar_retiro(saldo_cuenta, monto)
+        if exito:
+            transacciones_validas += 1
+
+    
+    mostrar_resultados_bancarios(saldo_cuenta, transacciones_validas)
+
+#RESULTADOS
+def mostrar_resultados_bancarios(saldo_final, total_validas):
+    print("\n--- RESUMEN FINAL ---")
+    print(f"Saldo Final de la Cuenta: {saldo_final:.2f}")
+    print(f"Total de Transacciones Válidas Procesadas: {total_validas}")
+    print("---------------------")
+
+
+# Codigo
+if __name__ == "__main__":
+    procesamiento_transacciones()
